@@ -1,28 +1,48 @@
 
 import { useEffect } from 'react';
-import './App.css';
+// import './style.css' //global olarak alır aynı class olanlara özelliği verebiliriz
+
+import styles from './App.module.css' //  module component yapabiliyoruz.
+
+import Demo from './Demo';
+
+import { Title } from './components'
+import Bootstrap from './Bootstrap';
+
+import  './input.css'
+import TailWind from './Tailwind';
 
 function App() {
-useEffect(() => {
-  if(process.env.NODE_ENV === 'production'){
-    //ANALYTİCİ BİLGİLENDİR
-  }
-},[])
+  useEffect(() => {
+
+    console.log(styles)
+    if (process.env.NODE_ENV === 'production') {
+      //ANALYTİCİ BİLGİLENDİR
+    }
+  }, [])
 
 
   return (
-<div>
+    <>
+      <div className={styles.App}>
+        {/* Projeyi development kısmında geliştirdiğinizi gösterir */}
+        <Title >{process.env.NODE_ENV}</Title>
+        <Title theme="dark">{process.env.NODE_ENV}</Title>
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <img src="/logo192.png" alt="" />
+          </>
+        )}
+      </div>
+      <Demo />
 
- {/* Projeyi development kısmında geliştirdiğinizi gösterir */}
-<h2>{process.env.NODE_ENV}</h2>
+      <div>
 
-{process.env.NODE_ENV === 'production' && (
-<>
-<img src="/logo192.png" alt="" />
-</>
-)}
-  
-</div>
+  </div>
+<Bootstrap/>
+
+<TailWind/>
+    </>
   );
 }
 
