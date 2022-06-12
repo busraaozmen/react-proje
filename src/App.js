@@ -1,10 +1,27 @@
 
+import { useEffect } from 'react';
 import './App.css';
 
 function App() {
+useEffect(() => {
+  if(process.env.NODE_ENV === 'production'){
+    //ANALYTİCİ BİLGİLENDİR
+  }
+},[])
+
+
   return (
 <div>
- <img src="/logo192.png" alt="" />
+
+ {/* Projeyi development kısmında geliştirdiğinizi gösterir */}
+<h2>{process.env.NODE_ENV}</h2>
+
+{process.env.NODE_ENV === 'production' && (
+<>
+<img src="/logo192.png" alt="" />
+</>
+)}
+  
 </div>
   );
 }
